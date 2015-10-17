@@ -7,14 +7,17 @@
         .col-md-4
           %h1 Log in
       .row
-        %form
-          .form-group
-            %label Email Address
-            %input(type='email' class='form-control' id='email')
-          .form-group
-            %label Password
-            %input(type='password' class='form-control' id='password')
-      .row
+        .col-md-3
         .col-md-4
-        .col-md-4
-          %button.btn.btn-primary#submit_btn Log in
+          %div #{flash[:notice]}
+          = form_for(:data,url:create_url) do |f|
+            = f.label :email
+            = f.email_field :email
+            %br
+            = f.label :password
+            = f.password_field :password
+            %br
+            = f.submit "Log in", class: "btn btn-primary"
+
+
+
